@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+const { getLogin, getIndex, getChat } = require('../controllers/index.controller.js');
 
-router.get('/', (req, res) =>{
-    res.render('index.html', {title: 'BellChat'});
-});
+//Pages
+router.get('/', getIndex );
 
-router.get('/chat', (req, res) =>{
-    res.render('chat.html',{title: 'Chat BellChat'});
-});
+router.get('/chat', getChat);
+
+//API REST
+router.get('/users/login', getLogin);
 
 module.exports = router;

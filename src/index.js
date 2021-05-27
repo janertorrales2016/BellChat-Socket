@@ -16,11 +16,12 @@ const config ={
     password: 'password',
     database: 'bellchat'
 };
+
 const pool = new Pool(config);
 
  const gettalgo = async () =>{
     const res = await pool.query('select * from users ');
-    console.log(res);
+    //console.log(res);
     pool.end();
  }
  gettalgo();
@@ -33,6 +34,9 @@ app.set('view engine', 'ejs');
 
 
 //middlewares
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 
 //routes
 app.use(require('./routes'));
