@@ -1,5 +1,7 @@
+//imports
 const {Pool} = require('pg');
 
+//connection BD
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -24,12 +26,22 @@ const getLogin = async (req, res) =>{
     res.send(response.rows);
 }
 
+const postInsertUsers = async (req, res) =>{
+    const {firstname, lastname, email, phone, city} = req.body;
+    const response = await pool.query('select insert_peoples($1, $2,$3,$4,$5)', [firstname, lastname, email, phone, city]);
+    res.json({
+        message: 'User Add Succesfully',
+        body:{
+            user: {firstname, lastname}
+        }
+    });
+}
 
 
-
+//exports functions
 module.exports = {
     getLogin,
     getIndex,
-    getChat
-
+    getChat,
+    postInsertUsers
 }

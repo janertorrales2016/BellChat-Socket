@@ -1,7 +1,9 @@
+//imports
 const express = require('express');
 const router = express.Router();
 
-const { getLogin, getIndex, getChat } = require('../controllers/index.controller.js');
+//resources
+const { getLogin, getIndex, getChat, postInsertUsers } = require('../controllers/index.controller.js');
 
 //Pages
 router.get('/', getIndex );
@@ -10,5 +12,7 @@ router.get('/chat', getChat);
 
 //API REST
 router.get('/users/login', getLogin);
+router.post('/users/insertUsers', postInsertUsers);
 
+//exports
 module.exports = router;
