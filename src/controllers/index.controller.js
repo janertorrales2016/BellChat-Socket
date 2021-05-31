@@ -21,7 +21,8 @@ const getChat = (req, res) =>{
 
 //routers ApiRest
 const getLogin = async (req, res) =>{
-    const {users, password} = req.body;
+    const users= req.params.users;
+    const password = req.params.password;
     const response = await pool.query('select checkuser1($1,$2)', [users, password]);
     res.send(response.rows);
 }

@@ -11,7 +11,7 @@ router.get('/', getIndex );
 router.get('/chat', getChat);
 
 //API REST
-router.get('/users/login', getLogin);
+router.get('/users/login/:users/:password', getLogin);
 router.post('/users/insertUsers', postInsertUsers);
 
 //exports
