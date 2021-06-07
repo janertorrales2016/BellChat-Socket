@@ -23,6 +23,7 @@ const getChat = (req, res) =>{
 const getLogin = async (req, res) =>{
     const users= req.params.users;
     const password = req.params.password;
+    console.log(users + password);
     const response = await pool.query('select checkuser1($1,$2)', [users, password]);
     res.send(response.rows);
 }
